@@ -1,0 +1,59 @@
+{
+  "particles": {
+    "number": {
+      "value": 300
+    },
+    "color": {
+      "value": "#fff"
+    },
+    "shape": {
+      "type": "circle",
+      "image": {
+        "src": "assets/pokeball.png"
+      },
+      "stroke": {
+        "width": 1,
+        "color": "#fff"
+      }
+    },
+    "size": {
+      "value": 2,
+      "random": true
+    },
+    "opacity": {
+      "value":  0.5,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 3
+      }
+    },
+    "move": {
+      "speed": 5
+    },
+    "line_linked": {
+      "color": "fff"
+    }
+  },
+  "interactivity": {
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "mode": "push"
+      }
+    },
+    "modes": {
+      "repulse": {
+        "distance": 80,
+        "duration": 1.5
+      },
+      "bubble": {
+        "size": 10,
+        "duration": 1
+      }
+    }
+  }
+}

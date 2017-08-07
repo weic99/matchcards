@@ -24,7 +24,7 @@
       "value":  0.5,
       "random": true,
       "anim": {
-        "enable": true,
+        "enable": false,
         "speed": 3
       }
     },

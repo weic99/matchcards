@@ -7,22 +7,25 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NgFocusDirective } from './directives/ng-focus.directive';
+
 const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'login', component: LoginComponent },
-  {path: '**', component: AppComponent}
+
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    NgFocusDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FlashMessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

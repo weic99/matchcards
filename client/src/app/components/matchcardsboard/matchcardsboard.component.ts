@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-matchcardsboard',
@@ -8,14 +7,8 @@ import { Router } from '@angular/router';
 })
 export class MatchcardsboardComponent implements OnInit {
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-  
-  private login() {
-    this.router.navigate(['/login']);
   }
 }

@@ -1,5 +1,5 @@
 <!-- <app-navbar></app-navbar> -->
 <div class="container">
-  <!-- <input (keyup) = "login()">  -->
+  <input (keyup)="login()" ngFocus *ngIf="redirected"> 
   <router-outlet></router-outlet>
 </div>

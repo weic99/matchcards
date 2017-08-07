@@ -6,21 +6,25 @@ import { HttpModule } from '@angular/http';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
 
 import { NgFocusDirective } from './directives/ng-focus.directive';
 
 import { MongoService } from './services/mongo.service';
 
-const routes: Routes = [
+import { MatchcardsboardComponent } from './components/matchcardsboard/matchcardsboard.component';
+import { LoginComponent } from './components/login/login.component';
 
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'matchcards', component: MatchcardsboardComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
+    NgFocusDirective,
+    MatchcardsboardComponent,
     LoginComponent,
-    NgFocusDirective
   ],
   imports: [
     BrowserModule,

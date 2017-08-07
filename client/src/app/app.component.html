@@ -1,31 +1,4 @@
 <!-- <app-navbar></app-navbar> -->
 <div class="container">
-  <!-- Login Form -->
-  <div (submit)="onLoginSubmit()" id="login" *ngIf="showLogin">
-    <form ngNativeValidate>
-      <div>
-        <!-- <label for="username" class="username"></label> -->
-        <input [(ngModel)]="username" 
-                type="text" 
-                placeholder="username" 
-                ngFocus 
-                name="username"
-                autocomplete="off"
-                required>
-      </div>
-      
-      <div>
-        <!-- <label for="password" class="username"></label> -->
-        <input [(ngModel)]="password" 
-                type="password" 
-                placeholder="password" 
-                name="password"
-                required>
-      </div>
-      <input type="submit" />
-    </form>
-  </div>
-  <label class="error" *ngIf="!!msg">{{msg}}</label>
-  <label class="success" *ngIf="success">{{msg}}</label>
   <router-outlet></router-outlet>
 </div>

@@ -1,6 +1,14 @@
 .card {
-  height: 200px;
+  height: 250px;
   width: 200px;
   margin: 2px;
   border: 2px solid rgba(100, 149, 237,.125);
+}
+.card-block {
+  padding-top: 10px;
+}
+
+.card-img-top {
+  width: 200px;
+  height: auto;
 }

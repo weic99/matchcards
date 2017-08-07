@@ -33,9 +33,9 @@
   font-size: 18px;                 /* restore font size removed in container */
   list-style-type: none;
   width: 150px;
-  height: 200px;
+  height: 230px;
   line-height: 50px;
-  margin: 15px 40px;
+  margin: 15px 30px;
   box-sizing: border-box;
   text-align: center;
 } 

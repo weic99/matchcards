@@ -46,32 +46,25 @@ export class LoginComponent implements OnInit {
       .then(res => {
         if (!res.success) {
           this.success = false;
-          this.msg = res.msg;
-          setTimeout(() => {
-            this.msg = '';
-          }, 2000);
+          this.setMessage(res.msg);
           return;
         } 
         this.success = true;
-        this.msg = 'Logging in...';
-        setTimeout(() => {
-          this.success = false;
-          this.msg = '';
-        }, 2000);
-        
+        this.setMessage('Logging in...');
         this.showLogin = false;
         this.router.navigate(['/matchcards']);
       })
       .catch(res => {
-        this.msg = 'Something went wrong, try again.';
-        setTimeout(() => {
-          this.msg = '';
-        }, 2000);
+        this.setMessage('Something went wrong, try again.');
       });
   }
   
   private setMessage(str: string) {
-    
+    this.msg = str;
+    setTimeout(() => {
+      this.success = false;
+      this.msg = '';
+    }, 2000);
   }
 
 

@@ -1,8 +1,8 @@
 #match-cards-board {
   background-color: #fff;
   opacity: 0.85;
-  border-radius: 32px;
-  overflow-y: hidden;
+  border-radius: 5%;
+  overflow-y: scroll;
   top: 5%;
   left: 5%;
   height: 90%;
@@ -11,6 +11,31 @@
 }
 
 .board {
-  text-align: center;
+  /*text-align: center;*/
   font-size: 20px;
+  margin: 2% 1%;
 }
+
+.p-table {
+	display: flex; 
+	margin: 0 auto;
+  justify-content: center;
+}
+
+.p-card-list {
+  margin: 0 auto;                  /* center container */
+  padding-left: 0;                 /* remove list padding */
+  font-size: 0; 
+}
+
+.p-card {
+  display: inline-block;
+  font-size: 18px;                 /* restore font size removed in container */
+  list-style-type: none;
+  width: 150px;
+  height: 200px;
+  line-height: 50px;
+  margin: 15px 40px;
+  box-sizing: border-box;
+  text-align: center;
+} 

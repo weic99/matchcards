@@ -13,6 +13,7 @@ import { MongoService } from './services/mongo.service';
 
 import { MatchcardsboardComponent } from './components/matchcardsboard/matchcardsboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { CardComponent } from './components/card/card.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
     NgFocusDirective,
     MatchcardsboardComponent,
     LoginComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FlashMessagesModule
   ],
-  providers: [MongoService],
+  providers: [MongoService, CardComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

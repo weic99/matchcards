@@ -25,6 +25,7 @@
       <input type="submit" />
     </form>
   </div>
-  <label class="msg" *ngIf="!!msg">{{msg}}</label>
+  <label class="error" *ngIf="!!msg">{{msg}}</label>
+  <label class="success" *ngIf="success">{{msg}}</label>
   <router-outlet></router-outlet>
 </div>

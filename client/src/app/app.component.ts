@@ -11,6 +11,7 @@ export class AppComponent {
   private showLogin: boolean = false;
   private username: string;
   private password: string;
+  private success: boolean = false;
   private msg: string;
   
   constructor(
@@ -28,11 +29,8 @@ export class AppComponent {
     }
   }
   
-  private login() {
-    // this.router.navigate(['/login']);
-  }
-  
   private onLoginSubmit() {
+    this.success = false;
     this.msg = '';
     const user = {
       username: this.username.trim(),
@@ -42,14 +40,17 @@ export class AppComponent {
     this.mongo.login(user)
       .then(res => {
         if (!res.success) {
+          this.success = false;
           this.msg = res.msg;
           setTimeout(() => {
             this.msg = '';
           }, 2000);
           return;
         } 
+        this.success = true;
         this.msg = 'Logging in...';
         setTimeout(() => {
+          this.success = false;
           this.msg = '';
         }, 2000);
       })
@@ -60,4 +61,9 @@ export class AppComponent {
         }, 2000);
       });
   }
+  
+  private setMessage(str: string) {
+    
+  }
+  
 }

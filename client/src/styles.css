@@ -15,7 +15,7 @@ body {
 
 canvas {
 	display: block;
-	vertical-align:bottom;
+	vertical-align: bottom;
 }
 
 #particles-js {
@@ -25,5 +25,5 @@ canvas {
   background-image: url('');
   background-size: cover;
   background-position: 50% 50%;
-  background-repeat: no-repeat;
+  /*background-repeat: no-repeat;*/
 }

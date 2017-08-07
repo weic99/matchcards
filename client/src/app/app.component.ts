@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { MongoService } from './services/mongo.service';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +11,17 @@ export class AppComponent {
   private showLogin: boolean = false;
   private username: string;
   private password: string;
-  private error: string;
+  private msg: string;
   
   constructor(
-    private router : Router,
-    private flashMessages: FlashMessagesService
+    private router: Router,
+    private mongo: MongoService
   ) { }
   
   @HostListener('window:keydown', ['$event']) 
   onKeyEvent(event: KeyboardEvent) {
     if (event && event.isTrusted && event.key === 'Escape') {
-      this.error = '';
+      this.msg = '';
       this.showLogin = false;
     } else {
       this.showLogin = true;
@@ -33,9 +33,31 @@ export class AppComponent {
   }
   
   private onLoginSubmit() {
-    this.error = this.username + this.password;
-    setTimeout(() => {
-      this.error = '';
-    }, 2000);
+    this.msg = '';
+    const user = {
+      username: this.username.trim(),
+      password: this.password.trim()
+    }
+    
+    this.mongo.login(user)
+      .then(res => {
+        if (!res.success) {
+          this.msg = res.msg;
+          setTimeout(() => {
+            this.msg = '';
+          }, 2000);
+          return;
+        } 
+        this.msg = 'Logging in...';
+        setTimeout(() => {
+          this.msg = '';
+        }, 2000);
+      })
+      .catch(res => {
+        this.msg = 'Something went wrong, try again.';
+        setTimeout(() => {
+          this.msg = '';
+        }, 2000);
+      });
   }
 }

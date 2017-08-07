@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes }   from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 
-import { FlashMessagesModule } from 'angular2-flash-messages';
 import { NgFocusDirective } from './directives/ng-focus.directive';
+
+import { MongoService } from './services/mongo.service';
 
 const routes: Routes = [
 
@@ -27,7 +29,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FlashMessagesModule
   ],
-  providers: [],
+  providers: [MongoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

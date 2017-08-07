@@ -13,8 +13,11 @@ export class AppComponent {
     private router: Router
   ) { }
   
-  private login() {
-    this.redirected = false;
-    this.router.navigate(['/login']);
+  private login(e) {
+    //console.log(e);
+    if (/^[a-zA-Z\s]+$/.test(e.key)) {
+      this.redirected = false;
+      this.router.navigate(['/login']);
+    }
   }
 }

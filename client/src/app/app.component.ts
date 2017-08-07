@@ -24,17 +24,11 @@ export class AppComponent {
       this.error = '';
       this.showLogin = false;
     } else {
-      this.login();
+      this.showLogin = true;
     }
   }
   
-  // @HostListener('window:click', ['$event']) 
-  // onMouseClick() {
-  //   this.login();
-  // }
-  
   private login() {
-    this.showLogin = true;
     // this.router.navigate(['/login']);
   }
   

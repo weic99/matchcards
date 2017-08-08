@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
         client_id: this.clientId,
-        redirect_uri: 'http://127.0.0.1:4200/matchcards',
+        redirect_uri: 'http://localhost:4200/matchcards',
         cookiepolicy: 'single_host_origin',
         scope: this.scope
       });
@@ -49,6 +49,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
         
+        //redirect to matchcards
+        this.success = true;
+        this.setMessage('Logging in...');
+        this.showLogin = false;
+        this.router.navigate(['/matchcards']);
       }, (error) => {
         console.log(error);
     });

@@ -59,9 +59,9 @@ input[type="submit"] {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 200px;
+  width: 320px;
   height: 18px;
-  margin: -72px 0 0 -100px;
+  margin: -77px 0 0 -160px;
   z-index: 1;
 }
 

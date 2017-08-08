@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
         client_id: this.clientId,
-        redirect_uri: 'http://localhost:4200/matchcards',
+        // redirect_uri: 'http://localhost:4200/matchcards',
         cookiepolicy: 'single_host_origin',
         scope: this.scope
       });
@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       .then(res => {
         if (!res.success) {
           this.success = false;
-          this.setMessage(res.msg);
+          this.setMessage('Wrong username/password');
           return;
         } 
         this.success = true;

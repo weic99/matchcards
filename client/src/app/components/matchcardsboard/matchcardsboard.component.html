@@ -7,7 +7,12 @@
     
     <div class="p-table">
       <ul class="p-card-list">  
-        <li class="p-card" *ngFor="let card of cards"><app-card></app-card></li>
+        <li class="p-card" 
+            *ngFor="let card of cards">
+            <app-card [card]="card" 
+                      (onSelected)="onSelected($event)">
+            </app-card>
+        </li>
       </ul>
     </div>
     

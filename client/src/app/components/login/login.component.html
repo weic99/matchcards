@@ -1,4 +1,6 @@
 <!-- Login Form -->
+<label class="error" *ngIf="!!msg">{{msg}}</label>
+<label class="success" *ngIf="success">{{msg}}</label>
 <div (submit)="onLoginSubmit()" id="login" *ngIf="showLogin">
   <form ngNativeValidate>
     <div>
@@ -24,5 +26,3 @@
     <input type="submit" />
   </form>
 </div>
-<label class="error" *ngIf="!!msg">{{msg}}</label>
-<label class="success" *ngIf="success">{{msg}}</label>

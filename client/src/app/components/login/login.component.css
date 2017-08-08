@@ -38,6 +38,11 @@ form {
   position: absolute;
   left: 47%;
 }
+
+#googleBtn:hover {
+  cursor: pointer;
+}
+
 input:focus {
     box-shadow: 0 0 2px 2px #4D90FE;
 }

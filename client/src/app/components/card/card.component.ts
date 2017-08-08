@@ -20,10 +20,10 @@ export class CardComponent implements OnInit {
   }
   
   onClick(clicked: boolean) {
-    this.clicked = true;
-    setTimeout(() => {
-      this.clicked = false;
-    }, 2000);
+    // this.clicked = true;
+    // setTimeout(() => {
+    //   this.clicked = false;
+    // }, 2000);
     
     this.onSelected.emit(this.card);
   }

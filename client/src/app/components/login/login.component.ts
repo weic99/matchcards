@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, HostListener, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { MongoService } from '../../services/mongo.service';
 
@@ -50,10 +50,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         console.log('Email: ' + profile.getEmail());
         
         //redirect to matchcards
-        this.success = true;
-        this.setMessage('Logging in...');
-        this.showLogin = false;
-        this.router.navigate(['/matchcards']);
+        this.zone.run(() => this.goToRoute('/matchcards'));
       }, (error) => {
         console.log(error);
     });
@@ -61,7 +58,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
  
   constructor(
     private router: Router,
-    private mongo: MongoService
+    private mongo: MongoService,
+    private zone: NgZone
   ) { }
   
   ngOnInit() {
@@ -98,10 +96,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
           this.setMessage('Wrong username/password');
           return;
         } 
-        this.success = true;
-        this.setMessage('Logging in...');
-        this.showLogin = false;
-        this.router.navigate(['/matchcards']);
+        
+        this.goToRoute('/matchcards');
       })
       .catch(res => {
         this.setMessage('Something went wrong, try again.');
@@ -114,5 +110,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this.success = false;
       this.msg = '';
     }, 2000);
+  }
+  
+  private goToRoute(str: string) {
+    this.success = true;
+    this.setMessage('Logging in...');
+    this.showLogin = false;
+    this.router.navigate([str]);
   }
 }

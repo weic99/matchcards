@@ -16,14 +16,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
   private success: boolean;
   private msg: string;
   
-  private clientId: string = '635789367848-nnifc2f55jo22pr1c9m098h9htlm1v96.apps.googleusercontent.com';
+  private clientId: string = '635789367848-ms16joogq2se46khi8ofg859ridv1vsg.apps.googleusercontent.com';
 
   private scope = [
     'profile',
     'email',
     'https://www.googleapis.com/auth/plus.me',
-    'https://www.googleapis.com/auth/contacts.readonly',
-    'https://www.googleapis.com/auth/admin.directory.user.readonly'
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile'
   ].join(' ');
   
   private auth2: any;
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     gapi.load('auth2', () => {
       this.auth2 = gapi.auth2.init({
         client_id: this.clientId,
+        redirect_uri: 'http://127.0.0.1:4200/matchcards',
         cookiepolicy: 'single_host_origin',
         scope: this.scope
       });

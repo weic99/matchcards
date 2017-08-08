@@ -7,17 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchcardsboardComponent implements OnInit {
   private cards: any[];
-  private cardCount: number;
-  private turn: number;
+  private totalPairs: number;
+  private pairsFound: number;
+  private firstCardSelected: any;
+  private isAcceptingInput: boolean;
+  private gameEnded: boolean;
   
   constructor() { }
 
   ngOnInit() {
-    this.cardCount = 12;
+    this.isAcceptingInput = true;
+    this.gameEnded = false;
+    this.firstCardSelected = undefined;
+    this.pairsFound = 0;
+    this.totalPairs = 12;
     this.cards = [];
-    for (let i = 0; i < this.cardCount; i++) {
-      this.cards.push(i);
-      this.cards.push(i);
+    for (let i = 0; i < this.totalPairs; i++) {
+      let card = {
+        number: i,
+        isRevealed: false
+      };
+      this.cards.push(card);
+      this.cards.push(Object.assign({}, card));
     }
     
     this.shuffle(this.cards);
@@ -37,6 +48,31 @@ export class MatchcardsboardComponent implements OnInit {
   }
   
   private onSelected(card: any) {
-    console.log(card);
+    if (!this.isAcceptingInput) {
+      return;
+    } 
+    setTimeout(() => {
+      this.isAcceptingInput = true;
+    }, 2000);
+    console.log('clicked', card);
+    card.isRevealed = true;
+    if (this.firstCardSelected) {
+      if (this.firstCardSelected.number === card.number) {
+        if (this.pairsFound++ === this.totalPairs) {
+          this.gameEnded = true;
+        }
+        console.log("matched", this.pairsFound);
+        this.firstCardSelected = undefined;
+      } else {
+        setTimeout(() => {
+          this.firstCardSelected.isRevealed = false;
+          card.isRevealed = false;
+          this.firstCardSelected = undefined;
+        }, 2000);
+      }
+    } else {
+      this.firstCardSelected = card;
+    } 
+    console.log('first card', this.firstCardSelected);
   }
 }

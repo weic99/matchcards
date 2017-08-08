@@ -1,6 +1,6 @@
 <div id="match-cards-board" class="align-middle">
   <div class="container-fluid board align-middle" >
-    matchcardsboard works!
+    <h3 *ngIf="gameEnded">You Win</h3>
     <br>
     <br>
     <br>
@@ -9,7 +9,7 @@
       <ul class="p-card-list">  
         <li class="p-card" 
             *ngFor="let card of cards">
-            <app-card [card]="card" 
+            <app-card [card]="card"
                       (onSelected)="onSelected($event)">
             </app-card>
         </li>

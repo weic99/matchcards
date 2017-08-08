@@ -4,7 +4,7 @@
        [src]="imageUrl"
   >
   <div class="card-block">
-    <h4 class="card-title" *ngIf="!clicked">Card works</h4>
-    <h4 class="card-title" *ngIf="clicked">{{card}}</h4>
+    <!-- <h4 class="card-title" *ngIf="!clicked">Card works</h4> -->
+    <h4 class="card-title" *ngIf="card.isRevealed">{{card.number}}</h4>
   </div>
 </div>

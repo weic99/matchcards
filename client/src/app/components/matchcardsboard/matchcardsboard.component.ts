@@ -20,7 +20,7 @@ export class MatchcardsboardComponent implements OnInit {
     this.gameEnded = false;
     this.firstCardSelected = undefined;
     this.pairsFound = 0;
-    this.totalPairs = 12;
+    this.totalPairs = 5;
     this.cards = [];
     for (let i = 0; i < this.totalPairs; i++) {
       let card = {
@@ -48,7 +48,7 @@ export class MatchcardsboardComponent implements OnInit {
   }
   
   private onSelected(card: any) {
-    if (!this.isAcceptingInput || card === this.firstCardSelected) {
+    if (this.gameEnded || !this.isAcceptingInput || card === this.firstCardSelected) {
       return;
     } 
     console.log('clicked', card);
@@ -59,7 +59,7 @@ export class MatchcardsboardComponent implements OnInit {
         this.isAcceptingInput = true;
       }, 2000);
       if (this.firstCardSelected.number === card.number) {
-        if (this.pairsFound++ === this.totalPairs) {
+        if (++this.pairsFound === this.totalPairs) {
           this.gameEnded = true;
         }
         console.log("matched", this.pairsFound);

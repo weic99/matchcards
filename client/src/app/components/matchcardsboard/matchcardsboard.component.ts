@@ -57,19 +57,20 @@ export class MatchcardsboardComponent implements OnInit {
       this.isAcceptingInput = false;
       setTimeout(() => {
         this.isAcceptingInput = true;
-      }, 2000);
+      }, 1500);
       if (this.firstCardSelected.number === card.number) {
         if (++this.pairsFound === this.totalPairs) {
           this.gameEnded = true;
         }
         console.log("matched", this.pairsFound);
         this.firstCardSelected = undefined;
+        this.isAcceptingInput = true;
       } else {
         setTimeout(() => {
           this.firstCardSelected.isRevealed = false;
           card.isRevealed = false;
           this.firstCardSelected = undefined;
-        }, 1750);
+        }, 1250);
       }
     } else {
       this.firstCardSelected = card;

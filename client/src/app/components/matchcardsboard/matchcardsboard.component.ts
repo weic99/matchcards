@@ -48,7 +48,7 @@ export class MatchcardsboardComponent implements OnInit {
   }
   
   private onSelected(card: any) {
-    if (!this.isAcceptingInput) {
+    if (!this.isAcceptingInput || card === this.firstCardSelected) {
       return;
     } 
     console.log('clicked', card);

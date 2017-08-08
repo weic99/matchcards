@@ -51,12 +51,13 @@ export class MatchcardsboardComponent implements OnInit {
     if (!this.isAcceptingInput) {
       return;
     } 
-    setTimeout(() => {
-      this.isAcceptingInput = true;
-    }, 2000);
     console.log('clicked', card);
     card.isRevealed = true;
     if (this.firstCardSelected) {
+      this.isAcceptingInput = false;
+      setTimeout(() => {
+        this.isAcceptingInput = true;
+      }, 2000);
       if (this.firstCardSelected.number === card.number) {
         if (this.pairsFound++ === this.totalPairs) {
           this.gameEnded = true;
@@ -68,7 +69,7 @@ export class MatchcardsboardComponent implements OnInit {
           this.firstCardSelected.isRevealed = false;
           card.isRevealed = false;
           this.firstCardSelected = undefined;
-        }, 2000);
+        }, 1750);
       }
     } else {
       this.firstCardSelected = card;

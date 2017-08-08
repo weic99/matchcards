@@ -35,7 +35,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FlashMessagesModule
   ],
-  providers: [MongoService, CardComponent],
+  providers: [MongoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

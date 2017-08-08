@@ -54,3 +54,7 @@ input[type="submit"] {
 .success {
   color: #5cb85c;
 }
+
+.btn {
+  padding: 5px;  
+}

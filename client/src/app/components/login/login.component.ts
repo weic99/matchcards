@@ -28,21 +28,19 @@ export class LoginComponent implements OnInit, AfterViewInit {
   
   private auth2: any;
   private googleInit() {
-    let that = this;
-    gapi.load('auth2', function () {
-      that.auth2 = gapi.auth2.init({
-        client_id: that.clientId,
+    gapi.load('auth2', () => {
+      this.auth2 = gapi.auth2.init({
+        client_id: this.clientId,
         cookiepolicy: 'single_host_origin',
-        scope: that.scope
+        scope: this.scope
       });
-      that.attachSignin(document.getElementById('googleBtn'));
+      this.attachSignin(document.getElementById('googleBtn'));
     });
   }
   
   private attachSignin(element) {
     let that = this;
-    this.auth2.attachClickHandler(element, {},
-      function (googleUser) {
+    this.auth2.attachClickHandler(element, {}, (googleUser) => {
         let profile = googleUser.getBasicProfile();
         console.log('Token || ' + googleUser.getAuthResponse().id_token);
         console.log('ID: ' + profile.getId());
@@ -50,8 +48,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
         
-      }, function (error) {
-        alert(JSON.stringify(error, undefined, 2));
+      }, (error) => {
+        console.log(error);
     });
   }
  

@@ -48,7 +48,18 @@
 } 
 
 .title {
-  margin-top: 15px;
-  background-color: grey;
-  color: white;
+  position: relative;
+  margin: 15px auto;
+  /*background-color: grey;*/
+  color: black;
+}
+
+.startMsg, .winMsg{
+  font-size: 40px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.winMsg {
+  color: #b22222;
 }

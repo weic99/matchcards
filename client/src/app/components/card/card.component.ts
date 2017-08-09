@@ -12,6 +12,7 @@ export class CardComponent implements OnInit {
   
   private defaultImageUrl: string;
   private clicked: boolean;
+  private audio: any;
   private cry: string;
   
   constructor(
@@ -24,6 +25,7 @@ export class CardComponent implements OnInit {
     this.firebase.getPokemonCry(this.card.pokeNumber)
       .then(res => {
         this.cry = res;
+        console.log(this.cry);
       });
   }
   

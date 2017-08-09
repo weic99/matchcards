@@ -35,6 +35,15 @@ export class MongoService {
       .catch(res => res.json());
   }
   
+  getAllPokemons(): Promise<any> {
+    return this.http.get(this.url + '/pokemon', {headers: this.headers})
+      .toPromise()
+      .then(res => {
+        return res.json().pokemons
+      })
+      .catch(this.handleError);
+  }
+  
   private handleError(error: any) : Promise<any> {
     //console.log('Mongo error', error);
     return Promise.reject(error.message || error);

@@ -1,10 +1,16 @@
 <div class="card" (click)="onClick()">
   <img class="card-img-top" 
        alt="Card image cap"
-       [src]="imageUrl"
+       [src]="defaultImageUrl"
+       *ngIf="!card.isRevealed"
+  >
+  <img class="card-img-top" 
+       alt="Card image cap"
+       [src]="card.imageUrl"
+       *ngIf="card.isRevealed"
   >
   <div class="card-block">
     <!-- <h4 class="card-title" *ngIf="!clicked">Card works</h4> -->
-    <h4 class="card-title" *ngIf="card.isRevealed">{{card.number}}</h4>
+    <h4 class="card-title" *ngIf="card.isRevealed">{{card.name}}</h4>
   </div>
 </div>

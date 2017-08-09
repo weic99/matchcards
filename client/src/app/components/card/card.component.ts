@@ -9,15 +9,14 @@ export class CardComponent implements OnInit {
   @Input() card: any;
   @Output() onSelected = new EventEmitter<any>();
   
-  private imageUrl: string = "https://firebasestorage.googleapis.com/v0/b/matchcards-7d5da.appspot.com/o/pokemon%2FQuestionMark.png?alt=media&token=ad883b8a-b08c-4c7d-be32-0ba6fe9459ac";
-  
+  private defaultImageUrl: string;
   private clicked: boolean;
   
   constructor() { }
 
   ngOnInit() {
     this.clicked = false;
-    this.imageUrl = 'https://firebasestorage.googleapis.com/v0/b/matchcards-7d5da.appspot.com/o/pokemon%2Fpokeball.png?alt=media&token=4361533e-eac5-4d3e-8193-9702b4ad7a90';
+    this.defaultImageUrl = "https://firebasestorage.googleapis.com/v0/b/matchcards-7d5da.appspot.com/o/pokemon%2Fpokeball.png?alt=media&token=4361533e-eac5-4d3e-8193-9702b4ad7a90";
   }
   
   onClick(clicked: boolean) {

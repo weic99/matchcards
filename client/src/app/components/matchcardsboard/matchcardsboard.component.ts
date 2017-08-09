@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MongoService } from '../../services/mongo.service';
 
 @Component({
   selector: 'app-matchcardsboard',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./matchcardsboard.component.css']
 })
 export class MatchcardsboardComponent implements OnInit {
+  private pokemons: any[];
   private cards: any[];
   private totalPairs: number;
   private pairsFound: number;
@@ -13,22 +15,34 @@ export class MatchcardsboardComponent implements OnInit {
   private isAcceptingInput: boolean;
   private gameEnded: boolean;
   
-  constructor() { }
+  constructor(
+    private mongo: MongoService
+  ) { }
 
   ngOnInit() {
     this.isAcceptingInput = true;
     this.gameEnded = false;
     this.firstCardSelected = undefined;
     this.pairsFound = 0;
-    this.generateDeck(3);
+    this.mongo.getAllPokemons()
+    .then(pokemons => {
+      this.pokemons = Array.from(pokemons);
+      this.generateDeck(3);
+      console.log(this.pokemons[0]);
+    });
   }
   
   private generateDeck(num: number) {
     this.totalPairs = num;
     this.cards = [];
+    
+    let shuffledPokemonArray = this.shuffle(this.pokemons.slice()).slice(0, this.totalPairs);
     for (let i = 0; i < this.totalPairs; i++) {
+      let randomPokemon = shuffledPokemonArray.pop();
       let card = {
         number: i,
+        name: randomPokemon.name,
+        imageUrl: randomPokemon.imageUrl,
         isRevealed: false
       };
       this.cards.push(card);
@@ -49,6 +63,8 @@ export class MatchcardsboardComponent implements OnInit {
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temp;
     }
+    
+    return array;
   }
   
   private onSelected(card: any) {

@@ -1,12 +1,11 @@
-const express = require('express');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/mongo');
-const router = express.Router();
+const usersRoutes = require('express').Router();
 
 const User = require('../models/user');
 
-router.post('/register', (req, res) => {
+usersRoutes.post('/register', (req, res) => {
   if (!req.body.username || !req.body.password) {
     res.status(422).json({
       success: false,
@@ -45,7 +44,7 @@ router.post('/register', (req, res) => {
   });
 });
 
-router.post('/login', (req, res) => {
+usersRoutes.post('/login', (req, res) => {
   User.getUserByUsername(req.body.username, (err, user) => {
     if (err) throw err;
     if (user) {
@@ -78,8 +77,8 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.get('/secret', passport.authenticate('jwt', {session: false}), (req, res) => {
+usersRoutes.get('/secret', passport.authenticate('jwt', {session: false}), (req, res) => {
   res.json('Secret path for authorized users');
 });
 
-module.exports = router;
+module.exports = usersRoutes;

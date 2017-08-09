@@ -29,8 +29,10 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 // Routes
-const users = require('./routes/users');
-app.use('/api/users', users);
+const usersRoutes = require('./routes/users');
+const pokemonRoutes = require('./routes/pokemon');
+app.use('/api/users', usersRoutes);
+app.use('/api/pokemon', pokemonRoutes);
 
 app.get('*', (req, res) => {
   res.send('hello');

@@ -17,6 +17,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.clicked = false;
+    this.imageUrl = 'https://firebasestorage.googleapis.com/v0/b/matchcards-7d5da.appspot.com/o/pokemon%2Fpokeball.png?alt=media&token=4361533e-eac5-4d3e-8193-9702b4ad7a90';
   }
   
   onClick(clicked: boolean) {

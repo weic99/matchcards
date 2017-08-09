@@ -20,7 +20,11 @@ export class MatchcardsboardComponent implements OnInit {
     this.gameEnded = false;
     this.firstCardSelected = undefined;
     this.pairsFound = 0;
-    this.totalPairs = 3;
+    this.generateDeck(3);
+  }
+  
+  private generateDeck(num: number) {
+    this.totalPairs = num;
     this.cards = [];
     for (let i = 0; i < this.totalPairs; i++) {
       let card = {

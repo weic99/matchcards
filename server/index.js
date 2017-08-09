@@ -6,9 +6,12 @@ const passport = require('passport');
 
 // Connect to mongoDB
 const config = require('./config/mongo');
+mongoose.Promise = global.Promise;
 mongoose.connect(config.database, {useMongoClient: true});
 mongoose.connection.on('connected', () => {
   console.log('Connected to database');
+  console.log('Populate database with Pokemons');
+  require('./insertAllPokemon');
 });
 
 // Server setup

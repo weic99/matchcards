@@ -2,7 +2,8 @@
   height: 250px;
   width: 200px;
   margin: 2px;
-  border: 3px outset rgba(100, 149, 237,.5);
+  border: none;
+  /*border: 3px outset rgba(100, 149, 237,.5);*/
 }
 .card-block {
   padding-top: 10px;
@@ -15,6 +16,28 @@
 
 .card:hover {
   cursor: pointer;
-  border: 2px solid rgba(100, 149, 237,.5);
-  box-shadow: 7px 7px 7px #888;
+  /*box-shadow: 7px 7px 7px lightblue;*/
+}
+
+.card-img-top:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

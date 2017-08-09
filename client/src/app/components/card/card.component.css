@@ -2,7 +2,7 @@
   height: 250px;
   width: 200px;
   margin: 2px;
-  border: 2px solid rgba(100, 149, 237,.5);
+  border: 3px outset rgba(100, 149, 237,.5);
 }
 .card-block {
   padding-top: 10px;
@@ -11,4 +11,10 @@
 .card-img-top {
   width: 200px;
   height: auto;
+}
+
+.card:hover {
+  cursor: pointer;
+  border: 2px solid rgba(100, 149, 237,.5);
+  box-shadow: 7px 7px 7px #888;
 }

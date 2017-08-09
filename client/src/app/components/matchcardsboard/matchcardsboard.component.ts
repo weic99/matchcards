@@ -27,8 +27,7 @@ export class MatchcardsboardComponent implements OnInit {
     this.mongo.getAllPokemons()
     .then(pokemons => {
       this.pokemons = Array.from(pokemons);
-      this.generateDeck(3);
-      console.log(this.pokemons[0]);
+      this.generateDeck(3);    
     });
   }
   
@@ -43,6 +42,7 @@ export class MatchcardsboardComponent implements OnInit {
         number: i,
         name: randomPokemon.name,
         imageUrl: randomPokemon.imageUrl,
+        pokeNumber: randomPokemon.number,
         isRevealed: false
       };
       this.cards.push(card);

@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NgFocusDirective } from './directives/ng-focus.directive';
 
 import { MongoService } from './services/mongo.service';
+import { FirebaseService } from './services/firebase.service';
 
 import { MatchcardsboardComponent } from './components/matchcardsboard/matchcardsboard.component';
 import { LoginComponent } from './components/login/login.component';
@@ -35,7 +36,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FlashMessagesModule
   ],
-  providers: [MongoService],
+  providers: [MongoService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

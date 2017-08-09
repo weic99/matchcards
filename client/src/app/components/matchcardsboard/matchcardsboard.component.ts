@@ -25,10 +25,10 @@ export class MatchcardsboardComponent implements OnInit {
     this.firstCardSelected = undefined;
     this.pairsFound = 0;
     this.mongo.getAllPokemons()
-    .then(pokemons => {
-      this.pokemons = Array.from(pokemons);
-      this.generateDeck(3);    
-    });
+      .then(pokemons => {
+        this.pokemons = Array.from(pokemons);
+        this.generateDeck(3);    
+      });
   }
   
   private generateDeck(num: number) {

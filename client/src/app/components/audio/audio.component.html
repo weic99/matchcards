@@ -1,0 +1,16 @@
+<audio #audioplayer
+       [src]="list"
+       [autoplay]="autoplay"
+       [controls]="controls"
+       [volume]="volume"
+       [loop]="loop"
+       [preload]="preload"
+       [muted]="muted"
+>
+
+</audio>
+<button type="button" (click)="play()" *ngIf="playButton">Play</button>
+<button type="button" (click)="pause()" *ngIf="pauseButton">Pause</button>
+<button type="button" (click)="previousTrack()" *ngIf="selectableButton">Previous</button>
+<button type="button" (click)="nextTrack()" *ngIf="selectableButton">Next</button>
+<button type="button" (click)="muteVideo()" *ngIf="muteButton">Mute</button>

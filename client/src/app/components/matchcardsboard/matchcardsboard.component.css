@@ -98,11 +98,13 @@ label + input[type=radio] + label {
 input[type=radio] + label {
   font-size: 16px;
   width: 80px;
+  background-color: white;
 }
 
 .radio-group {
   font-size: 0;
   border: solid 3px #675f6b;
+  background-color: #675f6b;
   display: inline-block;
   margin: 20px;
   border-radius: 10px;

@@ -24,7 +24,7 @@ export class MatchcardsboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleMsg = "Select number of pairs"
+    this.titleMsg = "Select Total Pairs"
     this.isAcceptingInput = true;
     this.gameEnded = false;
     this.firstCardSelected = undefined;
@@ -104,7 +104,7 @@ export class MatchcardsboardComponent implements OnInit {
         this.audio.play();
         // if all pairs are found, end the game
         if (++this.pairsFound === this.totalPairs) {
-          this.titleMsg = "You win, play again?"
+          this.titleMsg = "You Win, Play Again?"
           this.gameEnded = true;
         }
         

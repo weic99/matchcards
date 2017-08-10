@@ -15,7 +15,6 @@ import { FirebaseService } from './services/firebase.service';
 import { MatchcardsboardComponent } from './components/matchcardsboard/matchcardsboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { CardComponent } from './components/card/card.component';
-import { AudioComponent } from './components/audio/audio.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,7 +28,6 @@ const routes: Routes = [
     MatchcardsboardComponent,
     LoginComponent,
     CardComponent,
-    AudioComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,8 @@ export class MatchcardsboardComponent implements OnInit {
   private isAcceptingInput: boolean;
   private gameEnded: boolean;
   private cry: string;
+  private audio: HTMLAudioElement;
+  private audioSrc: HTMLElement;
   
   constructor(
     private mongo: MongoService
@@ -30,6 +32,9 @@ export class MatchcardsboardComponent implements OnInit {
         this.pokemons = Array.from(pokemons);
         this.generateDeck(3);    
       });
+    this.audio = <HTMLAudioElement>document.getElementById('cry');
+    this.audioSrc = document.getElementById('cry-src');
+    this.audio.volume = 0.25;
   }
   
   private generateDeck(num: number) {
@@ -86,13 +91,10 @@ export class MatchcardsboardComponent implements OnInit {
       // if two cards are matching
       if (this.firstCardSelected.number === card.number) {
         
+        // play the pokemon cry
         this.cry = card.cry;
-        console.log('card.cry', card.cry);
-        let sound = <HTMLAudioElement>document.getElementById('cry');
-        let source = document.getElementById('cry-src');
-        sound.volume = 0.25;
-        sound.load();
-        sound.play();
+        this.audio.load();
+        this.audio.play();
         // if all pairs are found, end the game
         if (++this.pairsFound === this.totalPairs) {
           this.gameEnded = true;

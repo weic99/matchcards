@@ -32,6 +32,7 @@ export class MatchcardsboardComponent implements OnInit {
         this.pokemons = Array.from(pokemons);
         this.generateDeck(3);    
       });
+    this.cry = "";
     this.audio = <HTMLAudioElement>document.getElementById('cry');
     this.audioSrc = document.getElementById('cry-src');
     this.audio.volume = 0.25;

@@ -42,7 +42,7 @@ export class MatchcardsboardComponent implements OnInit {
     this.totalPairs = num;
     this.cards = [];
     
-    let shuffledPokemonArray = this.shuffle(this.pokemons.slice()).slice(0, this.totalPairs);
+    let shuffledPokemonArray = this.shuffle(this.pokemons.slice());
     for (let i = 0; i < this.totalPairs; i++) {
       let randomPokemon = shuffledPokemonArray.pop();
       let card = {

@@ -14,6 +14,7 @@ export class MatchcardsboardComponent implements OnInit {
   private firstCardSelected: any;
   private isAcceptingInput: boolean;
   private gameEnded: boolean;
+  private cry: string;
   
   constructor(
     private mongo: MongoService
@@ -71,22 +72,36 @@ export class MatchcardsboardComponent implements OnInit {
     if (this.gameEnded || !this.isAcceptingInput || card === this.firstCardSelected) {
       return;
     } 
-    //console.log('clicked', card);
+    
+    //reveal the clicked card
     card.isRevealed = true;
     
+    //if first card is selected
     if (this.firstCardSelected) {
       this.isAcceptingInput = false;
       setTimeout(() => {
         this.isAcceptingInput = true;
       }, 1000);
       
+      // if two cards are matching
       if (this.firstCardSelected.number === card.number) {
+        
+        this.cry = card.cry;
+        console.log('card.cry', card.cry);
+        let sound = <HTMLAudioElement>document.getElementById('cry');
+        let source = document.getElementById('cry-src');
+        sound.volume = 0.25;
+        sound.load();
+        sound.play();
+        // if all pairs are found, end the game
         if (++this.pairsFound === this.totalPairs) {
           this.gameEnded = true;
         }
         
-        //console.log("matched", this.pairsFound);
+        // set first card to undefined
         this.firstCardSelected = undefined;
+        
+        // if two cards do not match
       } else {
         setTimeout(() => {
           this.firstCardSelected.isRevealed = false;
@@ -95,9 +110,10 @@ export class MatchcardsboardComponent implements OnInit {
         }, 750);
       }
       
+    // if first card not selected, set it  
     } else {
       this.firstCardSelected = card;
     } 
-    //console.log('first card', this.firstCardSelected);
+
   }
 }

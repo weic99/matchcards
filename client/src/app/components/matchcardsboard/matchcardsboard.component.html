@@ -3,7 +3,9 @@
     <h3 class="startMsg" *ngIf="!gameEnded">Play</h3>
     <h3 class="winMsg" *ngIf="gameEnded">You Win</h3>
   </div>
-
+  <audio id="cry">
+    <source id="cry-src" [src]="cry" type="audio/wav">
+  </audio>
   <div class="container-fluid board align-middle" >
     
     <div class="p-table">

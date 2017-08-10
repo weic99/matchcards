@@ -25,7 +25,8 @@ export class CardComponent implements OnInit {
     this.firebase.getPokemonCry(this.card.pokeNumber)
       .then(res => {
         this.cry = res;
-        console.log(this.cry);
+        this.card['cry'] = res;
+        //console.log(this.cry);
       });
   }
   

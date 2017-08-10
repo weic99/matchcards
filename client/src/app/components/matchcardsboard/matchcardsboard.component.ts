@@ -8,16 +8,17 @@ import { MongoService } from '../../services/mongo.service';
 })
 export class MatchcardsboardComponent implements OnInit {
   private pokemons: any[]; /*all the pokemon data*/
-  private cards: any[]; /*all cards on the game board*/
   private totalPairs: number; /*total number of pairs*/
   private pairsFound: number; /*total number of pairs found*/
   private firstCardSelected: any; /*first card of the pair to be matched*/
   private isAcceptingInput: boolean; /*blocks more clicks when false*/
-  private gameEnded: boolean; /*ends the game when true*/
-  private cry: string; /*url for pokemon cry*/
   private audio: HTMLAudioElement; /*player for playing pokemon cry*/
   private audioSrc: HTMLElement; /*source for the player*/
   private titleMsg: string; /*Message to display on the title bar*/
+
+  public gameEnded: boolean; /*ends the game when true*/
+  public cry: string; /*url for pokemon cry*/
+  public cards: any[]; /*all cards on the game board*/
 
   constructor(
     private mongo: MongoService
@@ -40,7 +41,7 @@ export class MatchcardsboardComponent implements OnInit {
     this.audio.volume = 0.25;
   }
 
-  private onPairsSelect(e) {
+  public onPairsSelect(e) {
     this.generateDeck(Number(e.target.value));
 
     /** set game states */

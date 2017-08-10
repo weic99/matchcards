@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private redirected: boolean = true;
+  public redirected: boolean = true;
 
   constructor(
     private router: Router

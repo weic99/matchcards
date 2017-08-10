@@ -25,7 +25,7 @@ export class CardComponent implements OnInit {
       });
   }
 
-  onClick(clicked: boolean) {
+  onClick() {
     this.onSelected.emit(this.card);
   }
 }

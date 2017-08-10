@@ -10,12 +10,12 @@ declare const gapi: any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, AfterViewInit {
-  private showLogin: boolean;
+  public showLogin: boolean;
+  public success: boolean;
+  public msg: string;
+
   private username: string;
   private password: string;
-  private success: boolean;
-  private msg: string;
-
   private clientId: string = '635789367848-ms16joogq2se46khi8ofg859ridv1vsg.apps.googleusercontent.com';
 
   private scope = [

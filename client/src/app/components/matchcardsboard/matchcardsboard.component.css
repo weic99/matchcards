@@ -65,10 +65,8 @@
 }
 
 /*selector css*/
-@import url("https://fonts.googleapis.com/css?family=Roboto");
 body {
   background: #332f35;
-  font-family: roboto;
 }
 
 input[type=radio] {

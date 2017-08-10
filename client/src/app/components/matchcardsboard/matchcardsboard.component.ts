@@ -25,10 +25,10 @@ export class MatchcardsboardComponent implements OnInit {
 
   ngOnInit() {
     this.titleMsg = "Select Total Pairs"
-    this.isAcceptingInput = true;
-    this.gameEnded = false;
-    this.firstCardSelected = undefined;
-    this.pairsFound = 0;
+    // this.isAcceptingInput = true;
+    // this.gameEnded = false;
+    // this.firstCardSelected = undefined;
+    // this.pairsFound = 0;
     this.mongo.getAllPokemons()
       .then(pokemons => {
         this.pokemons = Array.from(pokemons);
@@ -42,6 +42,13 @@ export class MatchcardsboardComponent implements OnInit {
   
   private onPairsSelect(e) {
     this.generateDeck(Number(e.target.value));
+    
+    /** set game states */
+    this.pairsFound = 0;
+    this.gameEnded = false;
+    this.isAcceptingInput = true;
+    this.firstCardSelected = undefined;
+    
     this.titleMsg = 'Play!';  
   }
   

@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   private redirected: boolean = true;
-  
+
   constructor(
     private router: Router
   ) { }
-  
+
   private login(e) {
     //console.log(e);
     if (/^[a-zA-Z\s]+$/.test(e.key)) {

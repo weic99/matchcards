@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   private password: string;
   private success: boolean;
   private msg: string;
-  
+
   private clientId: string = '635789367848-ms16joogq2se46khi8ofg859ridv1vsg.apps.googleusercontent.com';
 
   private scope = [
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     'https://www.googleapis.com/auth/userinfo.email',
     'https://www.googleapis.com/auth/userinfo.profile'
   ].join(' ');
-  
+
   private auth2: any;
   private googleInit() {
     gapi.load('auth2', () => {
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this.attachSignin(document.getElementById('googleBtn'));
     });
   }
-  
+
   private attachSignin(element) {
     let that = this;
     this.auth2.attachClickHandler(element, {}, (googleUser) => {
@@ -48,30 +48,30 @@ export class LoginComponent implements OnInit, AfterViewInit {
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
-        
+
         //redirect to matchcards
         this.zone.run(() => this.goToRoute('/matchcards'));
       }, (error) => {
         console.log(error);
     });
   }
- 
+
   constructor(
     private router: Router,
     private mongo: MongoService,
     private zone: NgZone
   ) { }
-  
+
   ngOnInit() {
     this.showLogin = true;
     this.success = false;
   }
-  
+
   ngAfterViewInit() {
     this.googleInit();
   }
-  
-  @HostListener('document:keyup', ['$event']) 
+
+  @HostListener('document:keyup', ['$event'])
   onKeyEvent(event: KeyboardEvent) {
     if (event && event.isTrusted && event.key === 'Escape') {
       this.msg = '';
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this.showLogin = true;
     }
   }
-  
+
   private onLoginSubmit() {
     this.success = false;
     this.msg = '';
@@ -88,22 +88,22 @@ export class LoginComponent implements OnInit, AfterViewInit {
       username: this.username.trim(),
       password: this.password.trim()
     }
-    
+
     this.mongo.login(user)
       .then(res => {
         if (!res.success) {
           this.success = false;
           this.setMessage('Wrong username/password');
           return;
-        } 
-        
+        }
+
         this.goToRoute('/matchcards');
       })
       .catch(res => {
         this.setMessage('Something went wrong, try again.');
       });
   }
-  
+
   private setMessage(str: string) {
     this.msg = str;
     setTimeout(() => {
@@ -111,7 +111,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this.msg = '';
     }, 2000);
   }
-  
+
   private goToRoute(str: string) {
     this.success = true;
     this.setMessage('Logging in...');

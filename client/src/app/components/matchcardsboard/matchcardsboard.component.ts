@@ -18,7 +18,7 @@ export class MatchcardsboardComponent implements OnInit {
   private audio: HTMLAudioElement; /*player for playing pokemon cry*/
   private audioSrc: HTMLElement; /*source for the player*/
   private titleMsg: string; /*Message to display on the title bar*/
-  
+
   constructor(
     private mongo: MongoService
   ) { }
@@ -32,30 +32,30 @@ export class MatchcardsboardComponent implements OnInit {
     this.mongo.getAllPokemons()
       .then(pokemons => {
         this.pokemons = Array.from(pokemons);
-        //this.generateDeck(3);    
+        //this.generateDeck(3);
       });
     this.cry = "";
     this.audio = <HTMLAudioElement>document.getElementById('cry');
     this.audioSrc = document.getElementById('cry-src');
     this.audio.volume = 0.25;
   }
-  
+
   private onPairsSelect(e) {
     this.generateDeck(Number(e.target.value));
-    
+
     /** set game states */
     this.pairsFound = 0;
     this.gameEnded = false;
     this.isAcceptingInput = true;
     this.firstCardSelected = undefined;
-    
-    this.titleMsg = 'Play!';  
+
+    this.titleMsg = 'Play!';
   }
-  
+
   private generateDeck(num: number) {
     this.totalPairs = num;
     this.cards = [];
-    
+
     let shuffledPokemonArray = this.shuffle(this.pokemons.slice());
     for (let i = 0; i < this.totalPairs; i++) {
       let randomPokemon = shuffledPokemonArray.pop();
@@ -69,57 +69,57 @@ export class MatchcardsboardComponent implements OnInit {
       this.cards.push(card);
       this.cards.push(Object.assign({}, card));
     }
-    
+
     this.shuffle(this.cards);
   }
-  
+
   private shuffle(array) {
     let currentIndex = array.length;
     let temp;
     let randomIndex;
-    
+
     while (currentIndex-- !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       temp = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temp;
     }
-    
+
     return array;
   }
-  
+
   private onSelected(card: any) {
     if (this.gameEnded || !this.isAcceptingInput || card === this.firstCardSelected) {
       return;
-    } 
-    
+    }
+
     //reveal the clicked card
     card.isRevealed = true;
-    
+
     //if first card is selected
     if (this.firstCardSelected) {
       this.isAcceptingInput = false;
       setTimeout(() => {
         this.isAcceptingInput = true;
       }, 1000);
-      
+
       // if two cards are matching
       if (this.firstCardSelected.number === card.number) {
-        
+
         // play the pokemon cry
         this.cry = card.cry;
         this.audio.load();
         this.audio.play();
-        
+
         // if all pairs are found, end the game
         if (++this.pairsFound === this.totalPairs) {
           this.titleMsg = "You Win! Play Again?"
           this.gameEnded = true;
-        } 
-      
+        }
+
         // set first card to undefined
         this.firstCardSelected = undefined;
-        
+
         // if two cards do not match
       } else {
         setTimeout(() => {
@@ -128,11 +128,11 @@ export class MatchcardsboardComponent implements OnInit {
           this.firstCardSelected = undefined;
         }, 750);
       }
-      
-    // if first card not selected, set it  
+
+    // if first card not selected, set it
     } else {
       this.firstCardSelected = card;
-    } 
+    }
 
   }
 }

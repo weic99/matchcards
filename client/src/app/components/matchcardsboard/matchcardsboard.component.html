@@ -1,35 +1,35 @@
 <div id="match-cards-board" class="align-middle">
-  
+
   <!-- title and win message area -->
   <div class="title">
     <h3 class="startMsg" *ngIf="!gameEnded">{{titleMsg}}</h3>
     <h3 class="winMsg" *ngIf="gameEnded">{{titleMsg}}</h3>
   </div>
-  
+
   <!-- select number of pairs -->
   <form>
    <div class="radio-group">
-     
+
     <input type="radio" id="option-one" name="selector" value="5"
           (change)="onPairsSelect($event)">
     <label for="option-one"> 5</label>
-    
+
     <input type="radio" id="option-two" name="selector" value="10"
           (change)="onPairsSelect($event)">
     <label for="option-two">10</label>
-    
+
     <input type="radio" id="option-three" name="selector" value="15"
           (change)="onPairsSelect($event)">
     <label for="option-three">15</label>
-    
+
     </div>
   </form>
-  
+
   <!-- card table -->
   <div class="container-fluid board align-middle" >
     <div class="p-table">
-      <ul class="p-card-list">  
-        <li class="p-card" 
+      <ul class="p-card-list">
+        <li class="p-card"
             *ngFor="let card of cards">
             <app-card [card]="card"
                       (onSelected)="onSelected($event)">
@@ -38,11 +38,10 @@
       </ul>
     </div>
   </div>
-  
-  
+
+
   <!-- pokemon cry player -->
   <audio id="cry">
     <source id="cry-src" [src]="cry" type="audio/wav">
   </audio>
 </div>
-

@@ -23,7 +23,7 @@
 
 .p-table {
   /*background-color: orange;*/
-	display: flex; 
+	display: flex;
 	margin: 0 auto;
   padding: 0;
 }
@@ -31,7 +31,7 @@
 .p-card-list {
   margin: 0 auto;                  /* center container */
   padding: 0;                 /* remove list padding */
-  font-size: 0; 
+  font-size: 0;
 }
 
 .p-card {
@@ -45,7 +45,7 @@
   margin: 0;
   box-sizing: border-box;
   text-align: center;
-} 
+}
 
 .title {
   position: relative;

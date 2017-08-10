@@ -4,7 +4,7 @@ import * as firebase from "firebase"
 @Injectable()
 export class FirebaseService {
 
-  constructor() { 
+  constructor() {
     // Initialize Firebase
     const config = {
       apiKey: 'AIzaSyA80FA_OFFdhaYEhVxjM0eNDBR6HGYdtB4',
@@ -16,7 +16,7 @@ export class FirebaseService {
     };
     firebase.initializeApp(config);
   }
-  
+
   getPokemonCry(num: number = 1) {
     let ref = firebase.storage().ref(`pokemon cries/${num}.wav`);
     return ref.getDownloadURL();

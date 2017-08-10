@@ -12,11 +12,11 @@ export class MongoService {
   private authToken: any;
   private username: any;
   private user_id: any;
-  
+
   constructor(
     private http: Http
   ) { }
-  
+
   login(user): Promise<any> {
     return this.http.post(this.url + '/users/login', user, {headers: this.headers})
       .toPromise()
@@ -34,7 +34,7 @@ export class MongoService {
       .catch(this.handleError)
       .catch(res => res.json());
   }
-  
+
   getAllPokemons(): Promise<any> {
     return this.http.get(this.url + '/pokemon', {headers: this.headers})
       .toPromise()
@@ -43,7 +43,7 @@ export class MongoService {
       })
       .catch(this.handleError);
   }
-  
+
   private handleError(error: any) : Promise<any> {
     //console.log('Mongo error', error);
     return Promise.reject(error.message || error);

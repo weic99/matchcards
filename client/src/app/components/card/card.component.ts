@@ -9,9 +9,9 @@ import { FirebaseService } from '../../services/firebase.service';
 export class CardComponent implements OnInit {
   @Input() card: any;
   @Output() onSelected = new EventEmitter<any>();
-  
+
   private defaultImageUrl: string;
-  
+
   constructor(
     private firebase: FirebaseService
   ) { }
@@ -24,7 +24,7 @@ export class CardComponent implements OnInit {
         //console.log(this.cry);
       });
   }
-  
+
   onClick(clicked: boolean) {
     this.onSelected.emit(this.card);
   }

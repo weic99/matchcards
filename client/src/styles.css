@@ -11,6 +11,10 @@ html {
 
 body {
   font: normal 75% Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-smooth: never;
+	-webkit-font-smoothing: none;
+	font-family: 'pokemon-font', monospace;
 }
 
 canvas {

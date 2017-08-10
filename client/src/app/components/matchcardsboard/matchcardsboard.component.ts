@@ -32,7 +32,7 @@ export class MatchcardsboardComponent implements OnInit {
     this.mongo.getAllPokemons()
       .then(pokemons => {
         this.pokemons = Array.from(pokemons);
-        this.generateDeck(3);    
+        //this.generateDeck(3);    
       });
     this.cry = "";
     this.audio = <HTMLAudioElement>document.getElementById('cry');
@@ -41,7 +41,8 @@ export class MatchcardsboardComponent implements OnInit {
   }
   
   private onPairsSelect(e) {
-    console.log(e.target.value);
+    this.generateDeck(Number(e.target.value));
+    this.titleMsg = 'Play!';  
   }
   
   private generateDeck(num: number) {
@@ -102,12 +103,13 @@ export class MatchcardsboardComponent implements OnInit {
         this.cry = card.cry;
         this.audio.load();
         this.audio.play();
+        
         // if all pairs are found, end the game
         if (++this.pairsFound === this.totalPairs) {
-          this.titleMsg = "You Win, Play Again?"
+          this.titleMsg = "You Win! Play Again?"
           this.gameEnded = true;
-        }
-        
+        } 
+      
         // set first card to undefined
         this.firstCardSelected = undefined;
         

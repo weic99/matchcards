@@ -55,7 +55,7 @@
 }
 
 .startMsg, .winMsg{
-  font-size: 40px;
+  font-size: 35px;
   margin-top: 15px;
   padding: 0;
 }
@@ -95,7 +95,13 @@ label + input[type=radio] + label {
   border-left: solid 3px #675f6b;
 }
 
+input[type=radio] + label {
+  font-size: 16px;
+  width: 80px;
+}
+
 .radio-group {
+  font-size: 0;
   border: solid 3px #675f6b;
   display: inline-block;
   margin: 20px;

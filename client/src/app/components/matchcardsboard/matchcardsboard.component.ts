@@ -7,22 +7,24 @@ import { MongoService } from '../../services/mongo.service';
   styleUrls: ['./matchcardsboard.component.css']
 })
 export class MatchcardsboardComponent implements OnInit {
-  private pokemons: any[];
-  private cards: any[];
-  private totalPairs: number;
-  private pairsFound: number;
-  private firstCardSelected: any;
-  private isAcceptingInput: boolean;
-  private gameEnded: boolean;
-  private cry: string;
-  private audio: HTMLAudioElement;
-  private audioSrc: HTMLElement;
+  private pokemons: any[]; /*all the pokemon data*/
+  private cards: any[]; /*all cards on the game board*/
+  private totalPairs: number; /*total number of pairs*/
+  private pairsFound: number; /*total number of pairs found*/
+  private firstCardSelected: any; /*first card of the pair to be matched*/
+  private isAcceptingInput: boolean; /*blocks more clicks when false*/
+  private gameEnded: boolean; /*ends the game when true*/
+  private cry: string; /*url for pokemon cry*/
+  private audio: HTMLAudioElement; /*player for playing pokemon cry*/
+  private audioSrc: HTMLElement; /*source for the player*/
+  private titleMsg: string; /*Message to display on the title bar*/
   
   constructor(
     private mongo: MongoService
   ) { }
 
   ngOnInit() {
+    this.titleMsg = "Select number of pairs"
     this.isAcceptingInput = true;
     this.gameEnded = false;
     this.firstCardSelected = undefined;
@@ -36,6 +38,10 @@ export class MatchcardsboardComponent implements OnInit {
     this.audio = <HTMLAudioElement>document.getElementById('cry');
     this.audioSrc = document.getElementById('cry-src');
     this.audio.volume = 0.25;
+  }
+  
+  private onPairsSelect(e) {
+    console.log(e.target.value);
   }
   
   private generateDeck(num: number) {
@@ -98,6 +104,7 @@ export class MatchcardsboardComponent implements OnInit {
         this.audio.play();
         // if all pairs are found, end the game
         if (++this.pairsFound === this.totalPairs) {
+          this.titleMsg = "You win, play again?"
           this.gameEnded = true;
         }
         

@@ -10,7 +10,7 @@ export class CardComponent implements OnInit {
   @Input() card: any;
   @Output() onSelected = new EventEmitter<any>();
 
-  private defaultImageUrl: string;
+  public defaultImageUrl: string;
 
   constructor(
     private firebase: FirebaseService

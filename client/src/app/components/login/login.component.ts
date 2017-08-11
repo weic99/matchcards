@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   private googleSignIn() {
     this.firebase.googleSignIn()
       .then(success => {
-        console.log(success);
+        this.zone.run(() => this.goToRoute('/matchcards'));
       });
   }
 
@@ -81,6 +81,8 @@ export class LoginComponent implements OnInit {
     this.success = true;
     this.setMessage('Logging in...');
     this.showLogin = false;
-    this.router.navigate([str]);
+    setTimeout(() => {
+      this.router.navigate([str]);
+    }, 1000);
   }
 }

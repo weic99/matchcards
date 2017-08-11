@@ -32,19 +32,21 @@
   margin: 0 auto;                  /* center container */
   padding: 0;                 /* remove list padding */
   font-size: 0;
+  display: block;
 }
 
 .p-card {
   /*background-color: purple;*/
-  display: inline-block;
+  display: inline-flex;
   font-size: 18px;                 /* restore font size removed in container */
-  list-style-type: none;
+  /*list-style-type: none;*/
   width: 200px;
   height: 250px;
   /*line-height: 50px;*/
   margin: 0;
-  box-sizing: border-box;
-  text-align: center;
+  padding: 0;
+  /*box-sizing: border-box;*/
+  /*text-align: center;*/
 }
 
 .title {

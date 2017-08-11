@@ -1,17 +1,24 @@
 .card {
-  height: 250px;
+  height: 200px;
   width: 200px;
-  margin: 2px;
+  margin: 0;
+  padding: 0;
   border: none;
   /*border: 3px outset rgba(100, 149, 237,.5);*/
 }
 .card-block {
   padding: 10px 0 0 0;
+  height: 46px;
+  width: 200px;
+  margin: 0;
+  padding: 0;
 }
 
 .card-img-top {
   max-width:100%;
   max-height:100%;
+  margin: 0;
+  padding: 0;
 }
 
 .card:hover {

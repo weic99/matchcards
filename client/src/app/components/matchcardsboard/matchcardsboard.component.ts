@@ -97,6 +97,11 @@ export class MatchcardsboardComponent implements OnInit {
     //reveal the clicked card
     card.isRevealed = true;
 
+    // play the pokemon cry
+    this.cry = card.cry;
+    this.audio.load();
+    this.audio.play();
+
     //if first card is selected
     if (this.firstCardSelected) {
       this.isAcceptingInput = false;
@@ -107,10 +112,10 @@ export class MatchcardsboardComponent implements OnInit {
       // if two cards are matching
       if (this.firstCardSelected.number === card.number) {
 
-        // play the pokemon cry
-        this.cry = card.cry;
-        this.audio.load();
-        this.audio.play();
+        // // play the pokemon cry
+        // this.cry = card.cry;
+        // this.audio.load();
+        // this.audio.play();
 
         // if all pairs are found, end the game
         if (++this.pairsFound === this.totalPairs) {

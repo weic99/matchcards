@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MongoService } from '../../services/mongo.service';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-matchcardsboard',
@@ -21,7 +21,7 @@ export class MatchcardsboardComponent implements OnInit {
   public cards: any[]; /*all cards on the game board*/
 
   constructor(
-    private mongo: MongoService
+    private firebase: FirebaseService
   ) { }
 
   ngOnInit() {
@@ -30,9 +30,9 @@ export class MatchcardsboardComponent implements OnInit {
     // this.gameEnded = false;
     // this.firstCardSelected = undefined;
     // this.pairsFound = 0;
-    this.mongo.getAllPokemons()
+    this.firebase.getAllPokemons()
       .then(pokemons => {
-        this.pokemons = Array.from(pokemons);
+        this.pokemons = pokemons;
         //this.generateDeck(3);
       });
     this.cry = "";

@@ -8,6 +8,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AppComponent } from './app.component';
 
 import { NgFocusDirective } from './directives/ng-focus.directive';
+import { NgScrollDirective } from './directives/ng-scroll.directive';
 
 import { MongoService } from './services/mongo.service';
 import { FirebaseService } from './services/firebase.service';
@@ -15,6 +16,7 @@ import { FirebaseService } from './services/firebase.service';
 import { MatchcardsboardComponent } from './components/matchcardsboard/matchcardsboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { CardComponent } from './components/card/card.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,6 +30,7 @@ const routes: Routes = [
     MatchcardsboardComponent,
     LoginComponent,
     CardComponent,
+    NgScrollDirective
   ],
   imports: [
     BrowserModule,

@@ -114,15 +114,18 @@ input[type=radio] + label {
 
 /*scrollbar*/
 #scroll {
-  position: absolute;
-  left: 5%;
-  bottom: 0;
+  position: fixed;
+  /*left: 3%;
+  bottom: 2%;*/
+  bottom: 5%;
+  left: 8%;
+
 }
 
 #scroll2 {
-  position: absolute;
-  right: 5%;
-  bottom: 0;
+  position: fixed;
+  bottom: 5%;
+  right: 8%;
 }
 
 a {

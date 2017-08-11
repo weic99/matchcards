@@ -26,14 +26,9 @@ export class MatchcardsboardComponent implements OnInit {
 
   ngOnInit() {
     this.titleMsg = "Select Total Pairs"
-    // this.isAcceptingInput = true;
-    // this.gameEnded = false;
-    // this.firstCardSelected = undefined;
-    // this.pairsFound = 0;
     this.firebase.getAllPokemons()
       .then(pokemons => {
         this.pokemons = pokemons;
-        //this.generateDeck(3);
       });
     this.cry = "";
     this.audio = <HTMLAudioElement>document.getElementById('cry');
@@ -90,7 +85,7 @@ export class MatchcardsboardComponent implements OnInit {
   }
 
   private onSelected(card: any) {
-    // play the pokemon cry
+    /** play the pokemon cry */
     this.cry = card.cry;
     this.audio.load();
     this.audio.play();
@@ -102,34 +97,29 @@ export class MatchcardsboardComponent implements OnInit {
       return;
     }
 
-    //reveal the clicked card
+    /** reveal the clicked card */
     card.isRevealed = true;
 
-    //if first card is selected
+    /** if first card is selected */
     if (this.firstCardSelected) {
       this.isAcceptingInput = false;
       setTimeout(() => {
         this.isAcceptingInput = true;
       }, 1000);
 
-      // if two cards are matching
+      /** if two cards are matching */
       if (this.firstCardSelected.number === card.number) {
 
-        // // play the pokemon cry
-        // this.cry = card.cry;
-        // this.audio.load();
-        // this.audio.play();
-
-        // if all pairs are found, end the game
+        /** if all pairs are found, end the game */
         if (++this.pairsFound === this.totalPairs) {
           this.titleMsg = "You Win! Play Again?"
           this.gameEnded = true;
         }
 
-        // set first card to undefined
+        /** set first card to undefined */
         this.firstCardSelected = undefined;
 
-        // if two cards do not match
+        /** if two cards do not match, reset matching */
       } else {
         setTimeout(() => {
           this.firstCardSelected.isRevealed = false;
@@ -138,7 +128,7 @@ export class MatchcardsboardComponent implements OnInit {
         }, 750);
       }
 
-    // if first card not selected, set it
+    /** if first card not selected, set it */
     } else {
       this.firstCardSelected = card;
     }

@@ -18,7 +18,7 @@ export class FirebaseService {
   }
 
   getPokemonCry(num: number = 1) {
-    let ref = firebase.storage().ref(`pokemon cries/${num}.wav`);
+    let ref = firebase.storage().ref(`normalized cries/normalized-${num}.wav`);
     return ref.getDownloadURL();
   }
 }

@@ -38,7 +38,7 @@ export class MatchcardsboardComponent implements OnInit {
     this.cry = "";
     this.audio = <HTMLAudioElement>document.getElementById('cry');
     this.audioSrc = document.getElementById('cry-src');
-    this.audio.volume = 0.25;
+    //this.audio.volume = 0.5;
   }
 
   public onPairsSelect(e) {

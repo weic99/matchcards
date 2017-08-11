@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Renderer } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
   selector: '[ngFocus]'
@@ -6,11 +6,10 @@ import { Directive, ElementRef, Renderer } from '@angular/core';
 export class NgFocusDirective {
 
   constructor(
-    private el: ElementRef,
-    private renderer: Renderer
+    private el: ElementRef
   ) { }
 
   ngAfterViewInit() {
-    this.renderer.invokeElementMethod(this.el.nativeElement, 'focus', []);
+    this.el.nativeElement.focus();
   }
 }

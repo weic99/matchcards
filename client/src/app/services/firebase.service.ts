@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import * as firebase from "firebase"
+import * as firebase from "firebase";
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class FirebaseService {
   private url = 'https://matchcards-7d5da.firebaseio.com/api';
+  private googleProvider: any;
 
   constructor(
     private http: Http
@@ -20,6 +21,8 @@ export class FirebaseService {
       messagingSenderId: '193741764493'
     };
     firebase.initializeApp(config);
+
+    this.googleProvider = new firebase.auth.GoogleAuthProvider();
   }
 
   getPokemonCry(num: number = 1) {
@@ -35,6 +38,18 @@ export class FirebaseService {
       })
       .catch(this.handleError);
   }
+
+  googleSignIn() {
+    return firebase.auth().signInWithPopup(this.googleProvider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const token = result.credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        return user;
+      }).catch(this.handleError);
+  }
+
 
   private handleError(error: any) : Promise<any> {
     //console.log('Mongo error', error);

@@ -90,17 +90,20 @@ export class MatchcardsboardComponent implements OnInit {
   }
 
   private onSelected(card: any) {
-    if (this.gameEnded || !this.isAcceptingInput || card === this.firstCardSelected) {
+    // play the pokemon cry
+    this.cry = card.cry;
+    this.audio.load();
+    this.audio.play();
+
+    if (this.gameEnded  /** game has ended */
+      || !this.isAcceptingInput /** delaying next input */
+      || card.isRevealed /** prevents picking matching same card or already matched */
+    ) {
       return;
     }
 
     //reveal the clicked card
     card.isRevealed = true;
-
-    // play the pokemon cry
-    this.cry = card.cry;
-    this.audio.load();
-    this.audio.play();
 
     //if first card is selected
     if (this.firstCardSelected) {

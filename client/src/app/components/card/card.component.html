@@ -1,16 +1,22 @@
 <div class="card" (click)="onClick()">
-  <img class="card-img-top"
-       alt="Card image cap"
-       [src]="defaultImageUrl"
-       *ngIf="!card.isRevealed"
-  >
+
+  <!-- pokemon image -->
   <img class="card-img-top"
        alt="Card image cap"
        [src]="card.imageUrl"
-       *ngIf="card.isRevealed"
+       [hidden]="!card.isRevealed"
   >
+  <!-- pokeball image -->
+  <img class="card-img-top"
+       alt="Card image cap"
+       [src]="defaultImageUrl"
+       [hidden]="card.isRevealed"
+  >
+
+  <!-- pokename -->
   <div class="card-block">
     <!-- <h4 class="card-title" *ngIf="!clicked">Card works</h4> -->
-    <h4 class="card-title" *ngIf="card.isRevealed">{{card.name}}</h4>
+    <h4 class="card-title" [hidden]="!card.isRevealed">{{card.name}}</h4>
   </div>
+
 </div>

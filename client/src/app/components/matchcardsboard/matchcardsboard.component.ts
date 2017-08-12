@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
@@ -21,13 +21,8 @@ export class MatchcardsboardComponent implements OnInit {
   public cards: any[]; /*all cards on the game board*/
 
   constructor(
-    private firebase: FirebaseService,
-    private el: ElementRef
+    private firebase: FirebaseService
   ) { }
-
-  ngDoCheck() {
-    console.log(this.el.nativeElement.offsetHeight);
-  }
 
   ngOnInit() {
     this.titleMsg = "Select Total Pairs"

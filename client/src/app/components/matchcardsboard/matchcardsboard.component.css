@@ -1,6 +1,5 @@
 #match-cards-board {
-  background-color: #fff;
-  opacity: 0.85;
+  background-color: rgba(255, 255, 255, 0.85);
   border-radius: 5%;
   overflow-y: scroll;
   top: 5%;
@@ -10,7 +9,6 @@
   position: absolute;
   text-align: center;
 }
-
 .board {
   /*background-color: blue;*/
   width: 100%;
@@ -20,48 +18,38 @@
   padding: 0;
   /*left: -1.5%;*/
 }
-
 .p-table {
   /*background-color: orange;*/
 	display: flex;
 	margin: 0 auto;
   padding: 0;
 }
-
 .p-card-list {
   margin: 0 auto;                  /* center container */
   padding: 0;                 /* remove list padding */
   font-size: 0;
   display: block;
 }
-
 .p-card {
   /*background-color: purple;*/
   display: inline-flex;
   font-size: 18px;                 /* restore font size removed in container */
-  /*list-style-type: none;*/
   width: 200px;
   height: 250px;
-  /*line-height: 50px;*/
   margin: 0;
   padding: 0;
-  /*box-sizing: border-box;*/
-  /*text-align: center;*/
 }
-
 .title {
+  /*background-color: grey;*/
   position: relative;
   margin: 15px auto;
-  /*background-color: grey;*/
-  color: black;
+  color: #335;
 }
-
 .startMsg, .winMsg{
   font-size: 35px;
   margin-top: 15px;
   padding: 0;
 }
-
 .winMsg {
   color: #b22222;
 }
@@ -70,37 +58,31 @@
 body {
   background: #332f35;
 }
-
 input[type=radio] {
   position: absolute;
   visibility: hidden;
   display: none;
 }
-
 label {
-  color: #9a929e;
+  color: #335;
   display: inline-block;
   cursor: pointer;
   font-weight: bold;
   padding: 5px 20px;
   margin-bottom: 0;
 }
-
 input[type=radio]:checked + label {
   color: #ccc8ce;
   background: #675f6b;
 }
-
 label + input[type=radio] + label {
   border-left: solid 3px #675f6b;
 }
-
 input[type=radio] + label {
-  font-size: 16px;
+  font-size: 20px;
   width: 80px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.85);
 }
-
 .radio-group {
   font-size: 0;
   border: solid 3px #675f6b;
@@ -112,22 +94,18 @@ input[type=radio] + label {
   margin-bottom: 15px;
 }
 
-/*scrollbar*/
+/* scrollbar */
 #scroll {
   position: fixed;
-  /*left: 3%;
-  bottom: 2%;*/
   bottom: 5%;
   left: 8%;
 
 }
-
 #scroll2 {
   position: fixed;
   bottom: 5%;
   right: 8%;
 }
-
 a {
   padding-top: 80px;
 }
@@ -138,8 +116,8 @@ a span {
   width: 24px;
   height: 24px;
   margin-left: -12px;
-  border-left: 1px solid #444;
-  border-bottom: 1px solid #444;
+  border-left: 2px solid rgba(3, 3, 5, 0.35);
+  border-bottom: 2px solid rgba(3, 3, 5, 0.35);
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   -webkit-animation: sdb 2s infinite;

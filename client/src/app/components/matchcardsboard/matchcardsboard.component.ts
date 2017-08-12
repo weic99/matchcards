@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
@@ -19,10 +19,25 @@ export class MatchcardsboardComponent implements OnInit {
   public gameEnded: boolean; /*ends the game when true*/
   public cry: string; /*url for pokemon cry*/
   public cards: any[]; /*all cards on the game board*/
+  public hideScrollIndicators: boolean;
 
   constructor(
-    private firebase: FirebaseService
-  ) { }
+    private firebase: FirebaseService,
+    private zone: NgZone
+  ) {
+
+    /** detect window resize */
+    window.onresize = (e) => {
+     console.log('window resized');
+     this.zone.run(() => {
+        let el = document.getElementById('match-cards-board');
+        this.hideScrollIndicators = true;
+        if (this.isOverFlowed(el)){
+           this.hideScrollIndicators = false;
+        }
+      });
+    };
+  }
 
   ngOnInit() {
     this.titleMsg = "Select Total Pairs"
@@ -34,6 +49,17 @@ export class MatchcardsboardComponent implements OnInit {
     this.audio = <HTMLAudioElement>document.getElementById('cry');
     this.audioSrc = document.getElementById('cry-src');
     //this.audio.volume = 0.5;
+  }
+
+  ngAfterViewInit(){
+    let el = document.getElementById('match-cards-board');
+    if (this.isOverFlowed(el)){
+        this.hideScrollIndicators = false;
+    }
+  }
+
+  isOverFlowed(element){
+    return element.scrollHeight > element.clientHeight;
   }
 
   public onPairsSelect(e) {

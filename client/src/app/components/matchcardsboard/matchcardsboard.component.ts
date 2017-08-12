@@ -39,10 +39,14 @@ export class MatchcardsboardComponent implements OnInit {
     this.el = document.getElementById('match-cards-board');
     this.hideScrollIndicators = true;
     this.titleMsg = "Select Total Pairs"
+
+    /** fetch all the pokemon data */
     this.firebase.getAllPokemons()
       .then(pokemons => {
         this.pokemons = pokemons;
       });
+
+    /** set the audio player for pokemon cries */
     this.cry = "";
     this.audio = <HTMLAudioElement>document.getElementById('cry');
     this.audioSrc = document.getElementById('cry-src');
@@ -54,6 +58,7 @@ export class MatchcardsboardComponent implements OnInit {
     this.showScrollbars();
   }
 
+  /** detect overflow hide/show scroll indicators */
   private showScrollbars(el = this.el){
     let limit = (el.scrollHeight - el.clientHeight) - 75;
     if (limit <= el.scrollTop) {
@@ -63,6 +68,7 @@ export class MatchcardsboardComponent implements OnInit {
     }
   }
 
+  /** initialize the game */
   public onPairsSelect(e) {
     this.generateDeck(Number(e.target.value));
 
@@ -77,12 +83,17 @@ export class MatchcardsboardComponent implements OnInit {
   private generateDeck(num: number) {
     this.totalPairs = num;
     this.cards = [];
+    let set = new Set();
 
-    let shuffledPokemonArray = this.shuffle(this.pokemons.slice());
-    for (let i = 0; i < this.totalPairs; i++) {
-      let randomPokemon = shuffledPokemonArray.pop();
+    /** generate random unique integers from 0 to total pokemons */
+    while (set.size < this.totalPairs) {
+      set.add(Math.round(Math.random() * this.pokemons.length));
+    }
+
+    /** generate cards for the deck */
+    set.forEach(n =>{
+      let randomPokemon = this.pokemons[n];
       let card = {
-        number: i,
         name: randomPokemon.name,
         imageUrl: randomPokemon.imageUrl,
         pokeNumber: randomPokemon.number,
@@ -90,9 +101,13 @@ export class MatchcardsboardComponent implements OnInit {
       };
       this.cards.push(card);
       this.cards.push(Object.assign({}, card));
-    }
+    });
+
+    /** shuffle deck */
+    this.shuffle(this.cards);
   }
 
+  /** shuffle an array */
   private shuffle(array) {
     let currentIndex = array.length;
     let temp;
@@ -108,6 +123,7 @@ export class MatchcardsboardComponent implements OnInit {
     return array;
   }
 
+  /** when a card is clicked */
   private onSelected(card: any) {
     /** play the pokemon cry */
     this.cry = card.cry;
@@ -132,7 +148,7 @@ export class MatchcardsboardComponent implements OnInit {
       }, 1000);
 
       /** if two cards are matching */
-      if (this.firstCardSelected.number === card.number) {
+      if (this.firstCardSelected.pokeNumber === card.pokeNumber) {
 
         /** if all pairs are found, end the game */
         if (++this.pairsFound === this.totalPairs) {

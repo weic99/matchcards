@@ -95,7 +95,7 @@ export class MatchcardsboardComponent implements OnInit {
       let randomPokemon = this.pokemons[n];
       let card = {
         name: randomPokemon.name,
-        // imageUrl: randomPokemon.imageUrl,
+        imageUrl: '',
         pokeNumber: randomPokemon.number,
         isRevealed: false
       };

@@ -21,7 +21,6 @@ export class CardComponent implements OnInit {
     this.firebase.getPokemonImage(this.card.name)
       .then(res => {
         this.card['imageUrl'] = res;
-        //console.log(this.cry);
       });
 
     this.firebase.getPokemonCry(this.card.pokeNumber)

@@ -39,6 +39,11 @@ export class FirebaseService {
       .catch(this.handleError);
   }
 
+  getPokemonImage(name: string = 'QuestionMark') {
+    let ref = firebase.storage().ref(`pokemon-small-size/${name}.png`);
+    return ref.getDownloadURL();
+  }
+
   googleSignIn() {
     return firebase.auth().signInWithPopup(this.googleProvider)
       .then((result) => {

@@ -108,7 +108,7 @@ export class MatchcardsboardComponent implements OnInit {
   }
 
   /** shuffle an array */
-  private shuffle(array) {
+  private shuffle(array) {console.log('shuffle', array);
     let currentIndex = array.length;
     let temp;
     let randomIndex;

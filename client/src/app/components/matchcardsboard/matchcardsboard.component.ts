@@ -15,6 +15,7 @@ export class MatchcardsboardComponent implements OnInit {
   private audio: HTMLAudioElement; /*player for playing pokemon cry*/
   private audioSrc: HTMLElement; /*source for the player*/
   private titleMsg: string; /*Message to display on the title bar*/
+  private el: HTMLElement;
 
   public gameEnded: boolean; /*ends the game when true*/
   public cry: string; /*url for pokemon cry*/
@@ -26,20 +27,17 @@ export class MatchcardsboardComponent implements OnInit {
     private zone: NgZone
   ) {
 
-    /** detect window resize */
+    /** detect window resize and show/hide scroll indicators*/
     window.onresize = (e) => {
-     console.log('window resized');
-     this.zone.run(() => {
-        let el = document.getElementById('match-cards-board');
-        this.hideScrollIndicators = true;
-        if (this.isOverFlowed(el)){
-           this.hideScrollIndicators = false;
-        }
+      this.zone.run(() => {
+        this.showScrollbars();
       });
     };
   }
 
   ngOnInit() {
+    this.el = document.getElementById('match-cards-board');
+    this.hideScrollIndicators = true;
     this.titleMsg = "Select Total Pairs"
     this.firebase.getAllPokemons()
       .then(pokemons => {
@@ -51,15 +49,18 @@ export class MatchcardsboardComponent implements OnInit {
     //this.audio.volume = 0.5;
   }
 
-  ngAfterViewInit(){
-    let el = document.getElementById('match-cards-board');
-    if (this.isOverFlowed(el)){
-        this.hideScrollIndicators = false;
-    }
+  ngAfterContentChecked() {
+    /** hide/show scroll indicators */
+    this.showScrollbars();
   }
 
-  isOverFlowed(element){
-    return element.scrollHeight > element.clientHeight;
+  private showScrollbars(el = this.el){
+    let limit = (el.scrollHeight - el.clientHeight) - 75;
+    if (limit <= el.scrollTop) {
+      this.hideScrollIndicators = true;
+    } else {
+      this.hideScrollIndicators = false;
+    }
   }
 
   public onPairsSelect(e) {
@@ -70,7 +71,6 @@ export class MatchcardsboardComponent implements OnInit {
     this.gameEnded = false;
     this.isAcceptingInput = true;
     this.firstCardSelected = undefined;
-
     this.titleMsg = 'Play!';
   }
 
@@ -91,8 +91,6 @@ export class MatchcardsboardComponent implements OnInit {
       this.cards.push(card);
       this.cards.push(Object.assign({}, card));
     }
-
-    this.shuffle(this.cards);
   }
 
   private shuffle(array) {

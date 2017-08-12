@@ -125,10 +125,13 @@ export class MatchcardsboardComponent implements OnInit {
 
   /** when a card is clicked */
   private onSelected(card: any) {
-    /** play the pokemon cry */
-    this.cry = card.cry;
-    this.audio.load();
-    this.audio.play();
+
+    if (this.isAcceptingInput) {
+      /** play the pokemon cry */
+      this.cry = card.cry;
+      this.audio.load();
+      this.audio.play();
+    }
 
     if (this.gameEnded  /** game has ended */
       || !this.isAcceptingInput /** delaying next input */

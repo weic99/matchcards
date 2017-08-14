@@ -8,27 +8,33 @@ import { Router } from '@angular/router';
 })
 export class ModeselectionComponent implements OnInit {
   public titleMsg: string;
+  public clickMsg: string;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.titleMsg = 'Select Game Mode'
+    this.titleMsg = 'Select Game Mode';
   }
 
   onModeSelect(e) {
-    if (e && e.target.value === 'single') {
+    if (e.target.value === 'single') {
       this.goToRoute('/matchcards');
+    } else if (e.target.value === 'pvp') {
+      this.clickMsg = 'Coming soon...';
+      setTimeout(() => {
+        this.clickMsg = '';
+      }, 2000);
     }
   }
 
-  private goToRoute(str: string) {
+  private goToRoute(str: string, delay: number = 300) {
     // this.success = true;
     // this.setMessage('Logging in...');
     // this.showLogin = false;
     setTimeout(() => {
       this.router.navigate([str]);
-    }, 1000);
+    }, delay);
   }
 }

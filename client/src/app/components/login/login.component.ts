@@ -86,12 +86,12 @@ export class LoginComponent implements OnInit {
     }, 2000);
   }
 
-  private goToRoute(str: string) {
+  private goToRoute(str: string, delay: number = 1000) {
     this.success = true;
     this.setMessage('Logging in...');
     this.showLogin = false;
     setTimeout(() => {
       this.router.navigate([str]);
-    }, 1000);
+    }, delay);
   }
 }

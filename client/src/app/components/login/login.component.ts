@@ -16,12 +16,16 @@ export class LoginComponent implements OnInit {
   private username: string;
   private password: string;
 
+  private loginSuccessRoute: string;
+
   constructor(
     private router: Router,
     private zone: NgZone,
     private firebase: FirebaseService,
     private mongo: MongoService
-  ) { }
+  ) {
+    this.loginSuccessRoute = '/selectgamemode';
+  }
 
   ngOnInit() {
     this.showLogin = true;
@@ -41,7 +45,7 @@ export class LoginComponent implements OnInit {
   private googleSignIn() {
     this.firebase.googleSignIn()
       .then(success => {
-        this.zone.run(() => this.goToRoute('/matchcards'));
+        this.zone.run(() => this.goToRoute(this.loginSuccessRoute));
       });
   }
 
@@ -55,7 +59,7 @@ export class LoginComponent implements OnInit {
 
     /** for demo purposes */
     if (user.username === 'demo' && user.password === 'demo') {
-      this.goToRoute('/matchcards');
+      this.goToRoute(this.loginSuccessRoute);
       return;
     }
 
@@ -67,7 +71,7 @@ export class LoginComponent implements OnInit {
           return;
         }
 
-        this.goToRoute('/matchcards');
+        this.goToRoute(this.loginSuccessRoute);
       })
       .catch(res => {
         this.setMessage('Something went wrong, try again.');

@@ -21,6 +21,7 @@ import { ModeselectionComponent } from './components/modeselection/modeselection
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'selectgamemode', component: ModeselectionComponent },
   { path: 'matchcards', component: MatchcardsboardComponent }
 ];
 

@@ -1,4 +1,4 @@
 # matchcards
 A card matching game with Pokemon
 
-App sample at [I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+App sample at [Firebase](https://matchcards-7d5da.firebaseapp.com/ "Google's Homepage")

@@ -1,0 +1,64 @@
+#mode-selection {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 5%;
+  overflow-y: scroll;
+  top: 5%;
+  left: 5%;
+  height: 90%;
+  width: 90%;
+  position: absolute;
+  text-align: center;
+}
+
+/* title message */
+.title {
+  /*background-color: grey;*/
+  position: relative;
+  margin: 15px auto;
+  color: #335;
+}
+.titleMsg {
+  font-size: 35px;
+  margin-top: 15px;
+  padding: 0;
+}
+
+/* selector css */
+body {
+  background: #332f35;
+}
+input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+label {
+  color: #335;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 20px;
+  margin-bottom: 0;
+}
+input[type=radio]:checked + label {
+  color: #ccc8ce;
+  background: #675f6b;
+}
+label + input[type=radio] + label {
+  border-left: solid 3px #675f6b;
+}
+input[type=radio] + label {
+  font-size: 20px;
+  width: 80px;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+.radio-group {
+  font-size: 0;
+  border: solid 3px #675f6b;
+  background-color: #675f6b;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 15px;
+}

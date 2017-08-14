@@ -1,0 +1,22 @@
+<div id="mode-selection">
+
+  <!-- title -->
+  <div class="title">
+    <h3 class="titleMsg" >{{titleMsg}}</h3>
+  </div>
+
+  <!-- select mode, single or pvp -->
+  <form>
+   <div class="radio-group">
+
+    <input type="radio" id="option-one" name="selector" value="single"
+          (change)="onModeSelect($event)">
+    <label for="option-one">Single</label>
+
+    <input type="radio" id="option-two" name="selector" value="pvp"
+          (change)="onModeSelect($event)">
+    <label for="option-two">PvP</label>
+
+    </div>
+  </form>
+</div>

@@ -16,6 +16,7 @@ import { FirebaseService } from './services/firebase.service';
 import { MatchcardsboardComponent } from './components/matchcardsboard/matchcardsboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { CardComponent } from './components/card/card.component';
+import { ModeselectionComponent } from './components/modeselection/modeselection.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
     MatchcardsboardComponent,
     LoginComponent,
     CardComponent,
-    NgScrollDirective
+    NgScrollDirective,
+    ModeselectionComponent
   ],
   imports: [
     BrowserModule,

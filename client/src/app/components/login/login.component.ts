@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
 
   private username: string;
   private password: string;
-  private clientId: string = '635789367848-ms16joogq2se46khi8ofg859ridv1vsg.apps.googleusercontent.com';
 
   constructor(
     private router: Router,
@@ -52,6 +51,12 @@ export class LoginComponent implements OnInit {
     const user = {
       username: this.username.trim(),
       password: this.password.trim()
+    }
+
+    /** for demo purposes */
+    if (user.username === 'demo' && user.password === 'demo') {
+      this.goToRoute('/matchcards');
+      return;
     }
 
     this.mongo.login(user)

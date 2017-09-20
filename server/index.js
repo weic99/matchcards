@@ -14,6 +14,10 @@ mongoose.connection.on('connected', () => {
   require('./insertAllPokemon');
 });
 
+console.log('Loading test');
+require('./test');
+console.log('Done');
+
 // Server setup
 const app = express();
 const port = process.env.PORT || 3000;

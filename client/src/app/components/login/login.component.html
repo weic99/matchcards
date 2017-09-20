@@ -2,6 +2,7 @@
 <label class="error" *ngIf="!!msg">{{msg}}</label>
 <label class="success" *ngIf="success">{{msg}}</label>
 <div (submit)="onLoginSubmit()" id="login" *ngIf="showLogin">
+  <button id="guest-login" (click)="goToRoute(loginSuccessRoute)">Login as Guest</button>
   <form ngNativeValidate>
     <div>
       <!-- <label for="username" class="username"></label> -->

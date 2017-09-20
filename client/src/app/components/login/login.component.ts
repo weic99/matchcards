@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     const user = {
       username: this.username.trim(),
       password: this.password.trim()
-    }
+    };
 
     /** for demo purposes */
     if (user.username === 'demo' && user.password === 'demo') {
